@@ -29,7 +29,7 @@ jobs:
       run: npm run build  # 构建 Vue 项目，生成 dist/ 目录
 
     - name: Archive production build  # 关键步骤：存档产物
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: vue-dist-artifact  # 存档名称
         path: dist/              # 存档 dist 目录
