@@ -2,36 +2,46 @@ name: Build and Archive
 
 on:
   push:
-    branches: [ test ]  # 监听 test 分支
+    branches: [ test ]  # 监听test分支的push
 
 jobs:
   build-and-archive:
     runs-on: ubuntu-latest
     steps:
+    # 拉取最新代码
     - name: Checkout code
       uses: actions/checkout@v4
 
+    # 设置node版本
     - name: Setup Node
       uses: actions/setup-node@v3
       with:
-        node-version: '22.12.0' 
+        node-version: '22.12.0'
         cache: 'yarn'
 
-    - name: Cache dependencies  # 缓存优化
+    # 缓存依赖
+    - name: Cache Yarn dependencies
       uses: actions/cache@v3
       with:
-        path: node_modules
-        key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+        path: |
+          node_modules
+          ~/.cache/yarn
+        key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-
 
+     # 安装依赖
     - name: Install dependencies
-      run: yarn install --frozen-lockfile  # 使用锁定版本安装
+      run: yarn install --frozen-lockfile
 
+    # 构建项目
     - name: Build project
-      run: yarn build  # 构建 Vue 项目，生成 dist/ 目录
+      run: yarn build  
 
-    - name: Archive production build  # 关键步骤：存档产物
+    # 存档产物
+    - name: Archive production build
       uses: actions/upload-artifact@v4
       with:
-        name: vue-dist  # 存档名称
-        path: dist/              # 存档 dist 目录
-        retention-days: 7        # 存档保留天数（默认90天）
+        name: vue-dist # 存档名称
+        path: dist/ # 存档dist目录
+        retention-days: 7 # 存档保留天数（默认90天）
