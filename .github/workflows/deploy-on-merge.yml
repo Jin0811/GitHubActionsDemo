@@ -62,7 +62,7 @@ jobs:
           <p>执行者: ${{ github.actor }}</p>
           <p>提交信息: ${{ github.event.head_commit.message }}</p>
           <p>详情请查看：<a href="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}">GitHub Actions运行记录</a></p>
-        to: 15797954826@163.com
+        to: 15797954826@163.com,1754551816@qq.com
         from: GitHub Actions Bot
 
     # 失败时发送的邮件
@@ -81,5 +81,5 @@ jobs:
           <p>执行者: ${{ github.actor }}</p>
           <p>提交信息: ${{ github.event.head_commit.message }}</p>
           <p>详情请查看：<a href="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}">GitHub Actions运行记录</a></p>
-        to: 15797954826@163.com
+        to: 15797954826@163.com,1754551816@qq.com
         from: GitHub Actions Bot
