@@ -58,7 +58,7 @@ jobs:
         subject: "构建成功"
         html_body: |
           <h2>构建成功！🎉</h2>
-          <p>项目 <strong>${{ github.repository }}</strong> 的分支 <strong>${{ github.ref }}</strong> 已成功构建。</p>
+          <p>项目 <strong>${{ github.repository }}</strong> 的分支 <strong>${{ github.ref_name }}</strong> 已成功构建。</p>
           <p>执行者: ${{ github.actor }}</p>
           <p>提交信息: ${{ github.event.head_commit.message }}</p>
           <p>详情请查看：<a href="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}">GitHub Actions运行记录</a></p>
@@ -77,7 +77,7 @@ jobs:
         subject: "构建失败"
         html_body: |
           <h2>构建失败！⚠️</h2>
-          <p>项目 <strong>${{ github.repository }}</strong> 的分支 <strong>${{ github.ref }}</strong> 构建失败，请及时检查！</p>
+          <p>项目 <strong>${{ github.repository }}</strong> 的分支 <strong>${{ github.ref_name }}</strong> 构建失败，请及时检查！</p>
           <p>执行者: ${{ github.actor }}</p>
           <p>提交信息: ${{ github.event.head_commit.message }}</p>
           <p>详情请查看：<a href="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}">GitHub Actions运行记录</a></p>
