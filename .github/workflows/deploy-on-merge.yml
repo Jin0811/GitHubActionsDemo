@@ -54,11 +54,10 @@ jobs:
         server_port: 465  # 或 994, 建议使用SSL端口:cite[5]
         username: ${{ secrets.MAIL_USERNAME }}  # 你在Secrets中设置的邮箱地址变量
         password: ${{ secrets.MAIL_PASSWORD }}  # 你在Secrets中设置的授权码变量
-        subject: 您的项目构建成功！🎉  # 邮件主题
-        body: |
+        subject: GitHubActionsDemo构建成功  # 邮件主题
+        html_body: |
           <h2>构建成功！</h2>
           <p>项目 ${{ github.repository }} 的分支 ${{ github.ref }} 已构建成功。</p>
           <p>详情请查看：<a href="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}">GitHub Actions运行记录</a></p>
         to: 15797954826@163.com  # 接收邮件的地址
         from: GitHub Actions Bot  # 发件人名称
-        content_type: text/html  # 邮件内容类型，此处使用HTML
