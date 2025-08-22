@@ -57,7 +57,7 @@ jobs:
         subject: 您的项目构建成功！🎉  # 邮件主题
         body: |
           <h2>构建成功！</h2>
-          <p>项目 ${{ github.repository }} 的分支 ${{ github.ref }} 已于 ${{ utcnow() }} 构建成功。</p>
+          <p>项目 ${{ github.repository }} 的分支 ${{ github.ref }} 已构建成功。</p>
           <p>详情请查看：<a href="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}">GitHub Actions运行记录</a></p>
         to: 15797954826@163.com  # 接收邮件的地址
         from: GitHub Actions Bot  # 发件人名称
