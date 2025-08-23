@@ -44,7 +44,7 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }} # 使用内置的令牌
         publish_dir: ./dist # 项目构建产物的目录
-        publish_branch: test # 指定要部署到的分支
+        publish_branch: deploy # 指定要部署到的独立分支
         full_commit_message: ${{ github.event.head_commit.message }} # 使用触发工作流的提交信息
 
     # 存档产物
