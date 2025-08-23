@@ -2,7 +2,7 @@ name: Build and Archive
 
 on:
   push:
-    branches: [ test ]  # 监听test分支的push
+    branches: [ test ] # 监听test分支的push
 
 jobs:
   build-and-archive:
@@ -36,15 +36,24 @@ jobs:
 
     # 构建项目
     - name: Build project
-      run: yarn build  
+      run: yarn build
+
+    # 部署到 GitHub Pages
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }} # 使用内置的令牌
+        publish_dir: ./dist # 项目构建产物的目录
+        publish_branch: test # 指定要部署到的分支
+        full_commit_message: ${{ github.event.head_commit.message }} # 使用触发工作流的提交信息
 
     # 存档产物
-    - name: Archive production build
-      uses: actions/upload-artifact@v4
-      with:
-        name: vue-dist # 存档名称
-        path: dist/ # 存档dist目录
-        retention-days: 7 # 存档保留天数（默认90天）
+    # - name: Archive production build
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: vue-dist # 存档名称
+    #     path: dist/ # 存档dist目录
+    #     retention-days: 7 # 存档保留天数（默认90天）
 
     # 成功时发送的邮件
     - name: Send success mail
